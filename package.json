@@ -6,7 +6,7 @@
   },
   "name": "cryptobot",
   "version": "1.0.0",
-  "description": "Um bot de discord desenvolvido na v14 de discormensagem com atualizações sobre o mercado das criptomoedas, assim que envia de minutos em minutos ele atualiza a lista editando a mensagem",
+  "description": "Bot para Discord desenvolvido com discord.js v14 que envia atualizações em tempo real do mercado de criptomoedas, editando automaticamente a mensagem a cada intervalo de minutos.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,7 +16,6 @@
     "url": ""
   },
   "keywords": [
-    "\u0016"
   ],
   "author": "Lucas Sousa (github.com/lucassousa-dev)",
   "license": "ISC"
