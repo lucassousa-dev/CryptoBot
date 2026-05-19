@@ -45,26 +45,26 @@ O projeto foi criado para praticar integração com APIs externas, automação d
 git clone https://github.com/lucassousa-dev/CryptoBot.git
 ```
 
-3. Acesse a pasta:
+2. Acesse a pasta:
 
 ```bash
 cd CryptoBot
 ```
 
-4. Instale as dependências:
+3. Instale as dependências:
 
 ```bash
 npm i
 ```
 
-5. Crie um arquivo .env com base no .env.example:
+4. Crie um arquivo .env com base no .env.example:
 
 ```bash
 BOT_TOKEN=seu_token_aqui
 CHANNEL_ID=id_do_canal_aqui
 ```
 
-6. Execute o bot::
+5. Execute o bot::
 
 ```bash
 node index.js
