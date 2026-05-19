@@ -1,5 +1,13 @@
 const { Client, Intents } = require('discord.js');
-const config = require('./config.json');
+require('dotenv').config();
+
+if (!process.env.BOT_TOKEN) {
+    throw new Error('BOT_TOKEN não foi definido no arquivo .env');
+}
+
+if (!process.env.CHANNEL_ID) {
+    throw new Error('CHANNEL_ID não foi definido no arquivo .env');
+}
 
 let fetch; // Declaração da variável fetch
 
@@ -11,12 +19,12 @@ let fetch; // Declaração da variável fetch
 
 const client = new Client({
     intents: [
-        1 << 0, // Intenção GUILDS
-        1 << 9  // Intenção GUILD_MESSAGES
+        1 << 0, // Intent GUILDS
+        1 << 9  // Intent GUILD_MESSAGES
     ]
 });
 
-const channelId = '1217847272315027478';
+const channelId = process.env.CHANNEL_ID;
 const cryptoSymbols = [
     'BTCUSDT', 'ETHUSDT', 'ADAUSDT', 'XRPUSDT', 'BNBUSDT',
     'SOLUSDT', 'DOTUSDT', 'DOGEUSDT', 'LINKUSDT', 'LTCUSDT',
@@ -30,8 +38,12 @@ client.once('ready', () => {
     console.log(`Bot logado como ${client.user.tag}!`);
     client.user.setActivity('comandos de barra', { type: 'LISTENING' });
 
-    setInterval(sendCryptoUpdates, 1 * 60 * 1000); // 1 minuto
-    console.log('Enviando atualização do mercado de criptomoedas...');
+    try {
+        setInterval(sendCryptoUpdates, 1 * 60 * 1000); // 1 minuto
+        console.log('Enviando atualização do mercado de criptomoedas...');
+    } catch (error) {
+        console.error('Erro ao configurar o intervalo de atualização:', error);
+    }
 });
 
 async function sendCryptoUpdates() {
@@ -77,4 +89,4 @@ async function fetchCryptoData() {
     return embed;
 }
 
-client.login(config.token);
+client.login(process.env.BOT_TOKEN);

@@ -1,45 +1,92 @@
 # CryptoBot
 
-CryptoBot é um bot de Discord desenvolvido para enviar mensagens atualizando os valores das criptomoedas utilizando a API da Binance.
+Bot para Discord desenvolvido em JavaScript que consulta preços de criptomoedas por meio da API pública da Binance e atualiza automaticamente uma mensagem em um canal configurado.
 
-## Instalação
+O projeto foi criado para praticar integração com APIs externas, automação de tarefas e desenvolvimento de bots para Discord.
 
-1. Clone este repositório:
-git clone https://github.com/TheLuckziN/CryptoBot.git
+## Funcionalidades
 
-2. Instale as dependências:
-npm install
+- Consulta de preços de múltiplas criptomoedas
+- Integração com a API pública da Binance
+- Envio de embed formatada no Discord
+- Atualização automática da mesma mensagem em intervalos definidos
+- Configuração de token e canal por variáveis de ambiente
 
+## Tecnologias utilizadas
 
-## Configuração
+- JavaScript
+- Node.js
+- Discord.js
+- API pública da Binance
+- Dotenv
 
-Antes de executar o bot, você precisa configurar algumas variáveis de ambiente:
+## Como o bot funciona
 
-- `DISCORD_TOKEN`: Token do seu bot do Discord. Você pode obter isso criando um novo bot no [Painel de Desenvolvedor do Discord](https://discord.com/developers/applications).
-- Adicione seu token em config.json
+1. O bot inicia e conecta ao Discord.
+2. Em intervalos configurados, consulta os preços das criptomoedas.
+3. Monta uma embed com os valores atualizados.
+4. Envia a embed no canal definido.
+5. Nas próximas execuções, edita a mesma mensagem para manter os dados atualizados sem gerar spam.
 
-## Uso
+## Como executar
 
-Para iniciar o bot, execute o seguinte comando:
-node .
+### Pré-requisitos
 
+- Node.js instalado
+- Aplicação criada no Discord Developer Portal
+- Token de bot
+- ID do canal onde a mensagem será enviada
 
-O bot enviará mensagens atualizando os valores das criptomoedas em intervalos regulares no canal especificado.
+### Passos
 
-## Contribuição
+1. Clone o repositório:
 
-Contribuições são bem-vindas! Se você deseja contribuir com este projeto, siga estas etapas:
+```bash
+git clone https://github.com/lucassousa-dev/CryptoBot.git
+```
 
-1. Fork este repositório.
-2. Crie um novo branch (`git checkout -b feature/nova-feature`).
-3. Faça commit das suas alterações (`git commit -am 'Adicione uma nova feature'`).
-4. Faça push para o branch (`git push origin feature/nova-feature`).
-5. Crie uma nova Pull Request.
+3. Acesse a pasta:
 
-## Licença
+```bash
+cd CryptoBot
+```
 
-Este bot foi totalmente feito por mim Lucas 'Luckzin' Gabriel (https://github.com/TheLuckziN) Favor não tirar os créditos.
+4. Instale as dependências:
 
-## Suporte
+```bash
+npm i
+```
 
-Se você tiver alguma dúvida ou problema, me chama no discord: luckzin_
+5. Crie um arquivo .env com base no .env.example:
+
+```bash
+BOT_TOKEN=seu_token_aqui
+CHANNEL_ID=id_do_canal_aqui
+```
+
+6. Execute o bot::
+
+```bash
+node index.js
+```
+
+### Variáveis de ambiente
+
+1. BOT_TOKEN - Token de autenticação do bot no Discord
+
+2. CHANNEL_ID - ID do canal que receberá as atualizações
+
+## Aprendizados aplicados
+
+- Consumo de API REST externa
+- Uso de async/await
+- Manipulação de embeds no Discord
+- Automação com execução periódica
+- Organização de configurações sensíveis fora do código-fonte
+
+## Possíveis Evoluções
+
+- Comando para escolher criptomoedas monitoradas
+- Intervalo de atualização configurável
+- Tratamento mais robusto de falhas da API
+- Separação do código em módulos
